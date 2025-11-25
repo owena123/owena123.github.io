@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Owen Andrews - ECE Portfolio</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 40px;
+            border-radius: 15px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 3em;
+            color: #667eea;
+            margin-bottom: 10px;
+        }
+
+        .subtitle {
+            font-size: 1.3em;
+            color: #666;
+            margin-bottom: 20px;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        .social-links a {
+            display: inline-block;
+            padding: 12px 30px;
+            background: #667eea;
+            color: white;
+            text-decoration: none;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+            font-weight: 600;
+        }
+
+        .social-links a:hover {
+            background: #764ba2;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .contact-info {
+            margin-top: 20px;
+            padding-top: 15px;
+            border-top: 2px solid #e0e0e0;
+        }
+
+        .contact-info p {
+            margin: 5px 0;
+            color: #666;
+            font-size: 0.95em;
+        }
+
+        section {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 40px;
+            margin-bottom: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        h2 {
+            font-size: 2.2em;
+            color: #667eea;
+            margin-bottom: 20px;
+            border-bottom: 3px solid #667eea;
+            padding-bottom: 10px;
+        }
+
+        .about-content {
+            font-size: 1.1em;
+            line-height: 1.8;
+        }
+
+        .about-content p {
+            margin-bottom: 15px;
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+
+        .project-card {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+        }
+
+        .project-card h3 {
+            color: #667eea;
+            font-size: 1.5em;
+            margin-bottom: 15px;
+        }
+
+        .project-card p {
+            color: #555;
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+
+        .video-container {
+            position: relative;
+            width: 100%;
+            padding-bottom: 177.78%;
+            height: 0;
+            overflow: hidden;
+            border-radius: 8px;
+            background: #000;
+            cursor: pointer;
+        }
+
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        .video-thumbnail {
+            position: relative;
+            width: 100%;
+            padding-bottom: 177.78%;
+            height: 0;
+            overflow: hidden;
+            border-radius: 8px;
+            background: #000;
+            cursor: pointer;
+        }
+
+        .video-thumbnail img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .play-button {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 80px;
+            height: 80px;
+            background: rgba(255, 0, 0, 0.9);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        .video-thumbnail:hover .play-button {
+            background: rgba(255, 0, 0, 1);
+            transform: translate(-50%, -50%) scale(1.1);
+        }
+
+        .play-button::after {
+            content: '';
+            width: 0;
+            height: 0;
+            border-left: 25px solid white;
+            border-top: 15px solid transparent;
+            border-bottom: 15px solid transparent;
+            margin-left: 5px;
+        }
+
+        .video-link {
+            display: block;
+            text-align: center;
+            margin-top: 15px;
+            padding: 10px;
+            background: #667eea;
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            transition: background 0.3s ease;
+        }
+
+        .video-link:hover {
+            background: #764ba2;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            color: white;
+            font-size: 0.9em;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2em;
+            }
+
+            .subtitle {
+                font-size: 1.1em;
+            }
+
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+
+            section {
+                padding: 25px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Owen Andrews</h1>
+            <p class="subtitle">Electrical & Computer Engineering Major<br>Virginia Military Institute</p>
+            <div class="social-links">
+                <a href="https://www.linkedin.com/in/owena12/" target="_blank">LinkedIn</a>
+                <a href="https://github.com/owena123" target="_blank">GitHub</a>
+            </div>
+            <div class="contact-info">
+                <p>📧 andrewsot28@vmi.edu | owentandrews@gmail.com</p>
+                <p>📍 Richmond, Virginia | 📱 804-396-5982</p>
+            </div>
+        </header>
+
+        <section id="about">
+            <h2>About Me</h2>
+            <div class="about-content">
+                <p>
+                    I'm Owen Andrews, an Electrical and Computer Engineering student at Virginia Military Institute with a passion for hands-on learning and innovation. My journey in engineering is driven by curiosity and a love for creating and understanding technology at a fundamental level.
+                </p>
+                <p>
+                    I thrive on personal projects that challenge me to learn new skills and push boundaries. Whether I'm soldering intricate circuits, exploring Software Defined Radio (SDR) devices to understand wireless communications, or diving into new programming languages like Python, I'm constantly seeking opportunities to expand my technical knowledge. Each project is a chance to transform theoretical concepts into tangible results.
+                </p>
+                <p>
+                    Beyond the lab and classroom, I'm an active member of the VMI Golf Club where I enjoy the strategic and competitive aspects of the game. I also play soccer regularly, which helps me maintain balance and teamwork skills that complement my engineering pursuits. These activities remind me that innovation often comes from diverse experiences and perspectives.
+                </p>
+            </div>
+        </section>
+
+        <section id="projects">
+            <h2>Personal Projects</h2>
+            <div class="projects-grid">
+                
+                <div class="project-card">
+                    <h3>IV Pump with Arduino</h3>
+                    <p>
+                        This was a project for one of our engineering classes where we had to design an IV pump that functions on a timer, but also was able to display flow rate, amount pumped, temperature, and more on a LCD Screen.
+                    </p>
+                    <a href="https://www.youtube.com/shorts/XG-qU7JLIqg" target="_blank" style="text-decoration: none;">
+                        <div class="video-thumbnail">
+                            <img src="https://img.youtube.com/vi/XG-qU7JLIqg/maxresdefault.jpg" alt="IV Pump with Arduino">
+                            <div class="play-button"></div>
+                        </div>
+                    </a>
+                </div>
+
+                <div class="project-card">
+                    <h3>Simon Says Game with Arduino Uno</h3>
+                    <p>
+                        This was a project in an engineering class where we had to use buttons, and LEDs on a bread board to emulate the Simon Says memory game.
+                    </p>
+                    <a href="https://www.youtube.com/shorts/4DkivTSFYKw" target="_blank" style="text-decoration: none;">
+                        <div class="video-thumbnail">
+                            <img src="https://img.youtube.com/vi/4DkivTSFYKw/maxresdefault.jpg" alt="Simon Says Game with Arduino">
+                            <div class="play-button"></div>
+                        </div>
+                    </a>
+                </div>
+
+            </div>
+        </section>
+
+        <footer>
+            <p>&copy; 2025 Owen Andrews | VMI Class of 2028</p>
+        </footer>
+    </div>
+</body>
+</html>
